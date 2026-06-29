@@ -1,0 +1,14 @@
+.btn {
+  padding: 10px 15px;
+  cursor: pointer;
+}
+
+.btn-primary {
+  background: rgb(36, 56, 116);
+  color: white;
+}
+
+.btn-danger {
+  background: crimson;
+  color: white;
+}
