@@ -41,11 +41,45 @@ export const useCategoriasStore = defineStore('categorias', () => {
     }
   }
 
+  async function editarCategoria(id, categoria) {
+    loading.value = true
+    error.value = ''
+
+    try {
+      await service.update(id, categoria)
+      await fetchCategorias()
+      return true
+    } catch (e) {
+      error.value = 'No se pudo editar la categoria'
+      console.error(e)
+    } finally {
+      loading.value = false
+    }
+  }
+
+  async function eliminarCategoria(id) {
+    loading.value = true
+    error.value = ''
+
+    try {
+      await service.delete(id)
+      await fetchCategorias()
+      return true
+    } catch (e) {
+      error.value = 'No se pudo eliminar la categoria'
+      console.error(e)
+    } finally {
+      loading.value = false
+    }
+  }
+
   return {
     categorias,
     loading,
     error,
     fetchCategorias,
     crearCategoria,
+    editarCategoria,
+    eliminarCategoria,
   }
 })

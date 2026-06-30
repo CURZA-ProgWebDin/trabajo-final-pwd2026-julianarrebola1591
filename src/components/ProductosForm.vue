@@ -83,7 +83,7 @@ function guardarProducto() {
         </select>
       </div>
 
-      <button type="submit">Guardar Producto</button>
+      <button class="btn-guardar" type="submit">Guardar Producto</button>
     </form>
   </section>
 </template>

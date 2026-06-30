@@ -20,12 +20,13 @@ function cerrarSesion() {
       <router-link to="/">Home</router-link>
       <router-link to="/productos">Productos</router-link>
       <router-link to="/categorias">Categorías</router-link>
+      <router-link to="/proveedores">Proveedores</router-link>
     </div>
 
     <div class="nav-right" v-if="authenticated">
       <span class="usuario"> Bienvenido {{ auth_user }} </span>
 
-      <button @click="cerrarSesion">Logout</button>
+      <button class="btn-logout" @click="cerrarSesion">Logout</button>
     </div>
   </nav>
 
@@ -70,19 +71,5 @@ nav a.router-link-active {
   color: white;
   margin-right: 15px;
   font-weight: bold;
-}
-
-button {
-  background-color: #ef4444;
-  color: white;
-  border: none;
-  padding: 8px 14px;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: background-color 0.2s;
-}
-
-button:hover {
-  background-color: #dc2626;
 }
 </style>

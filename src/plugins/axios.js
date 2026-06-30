@@ -17,3 +17,14 @@ instance.interceptors.request.use((config) => {
 
   return config
 })
+
+instance.interceptors.response.use(
+  (response) => response,
+  (error) => {
+    if (error.response?.status === 401) {
+      const authStore = useAuthStore()
+      authStore.logout()
+      router.push({ name: Home })
+    }
+  },
+)

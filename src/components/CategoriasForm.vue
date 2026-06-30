@@ -50,16 +50,11 @@ async function guardarCategoria() {
         <textarea v-model="categoria.descripcion" />
       </div>
 
-      <button class="btn btn-primary" type="submit">Guardar Categoria</button>
+      <button class="btn btn-guardar" type="submit">Guardar Categoria</button>
 
       <p v-if="mensaje">{{ mensaje }}</p>
     </form>
   </section>
 </template>
 
-<style scoped>
-.container {
-  max-width: 600px;
-  margin: auto;
-}
-</style>
+<style scoped></style>

@@ -41,6 +41,30 @@ const routes = [
     component: () => import('../views/CategoriasCreate.vue'),
     meta: { requiresAuth: true },
   },
+  {
+    path: '/categorias/editar/:id',
+    name: 'CategoriasEditar',
+    component: () => import('../views/CategoriasEditar.vue'),
+    meta: { requiresAuth: true },
+  },
+  {
+    path: '/proveedores',
+    name: 'Proveedores',
+    component: () => import('../views/ProveedoresView.vue'),
+    meta: { requiresAuth: true },
+  },
+  {
+    path: '/proveedores/crear',
+    name: 'ProveedoresCreate',
+    component: () => import('../views/ProveedoresCreate.vue'),
+    meta: { requiresAuth: true },
+  },
+  {
+    path: '/proveedores/editar/:id',
+    name: 'ProveedoresEditar',
+    component: () => import('../views/ProveedoresEditar.vue'),
+    meta: { requiresAuth: true },
+  },
 ]
 
 const router = createRouter({

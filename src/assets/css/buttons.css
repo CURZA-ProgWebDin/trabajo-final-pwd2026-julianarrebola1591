@@ -1,14 +1,58 @@
+button {
+  padding: 5px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  transition:
+    background 0.2s,
+    color 0.2s;
+}
+
 .btn {
   padding: 10px 15px;
   cursor: pointer;
 }
 
-.btn-primary {
+.btn-guardar {
   background: rgb(36, 56, 116);
   color: white;
 }
 
-.btn-danger {
+.btn-cancelar {
   background: crimson;
   color: white;
+}
+.btn-editar {
+  background: none;
+  border: 1px solid #4a90e2;
+  color: #4a90e2;
+}
+
+.btn-editar:hover {
+  background-color: #4a90e2;
+  color: white;
+}
+
+.btn-eliminar {
+  background: none;
+  border: 1px solid #e24a4a;
+  color: #e24a4a;
+}
+
+.btn-eliminar:hover {
+  background-color: #e24a4a;
+  color: white;
+}
+.btn-logout {
+  background-color: #ef4444;
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.btn-logout:hover {
+  background-color: #dc2626;
 }

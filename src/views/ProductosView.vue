@@ -22,11 +22,35 @@ onMounted(() => {
 
     <p v-if="error">{{ error }}</p>
 
-    <ul v-if="!loading && productos.length">
-      <li v-for="producto in productos" :key="producto.id">
-        {{ producto.nombre }}
-      </li>
-    </ul>
+    <table v-if="!loading && productos.length">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nombre</th>
+          <th>Categoria</th>
+          <th>Precio de compra</th>
+          <th>Precio de venta</th>
+          <th>Proveedor</th>
+          <th>Stock</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="producto in productos" :key="producto.id">
+          <td>{{ producto.id }}</td>
+          <td>{{ producto.nombre }}</td>
+          <td>{{ producto.categoria_id.nombre }}</td>
+          <td>{{ producto.precio_costo }}</td>
+          <td>{{ producto.precio_venta }}</td>
+          <td>{{ producto.proveedor_id.nombre }}</td>
+          <td>{{ producto.stock_actual }}</td>
+          <td class="acciones">
+            <button @click="irAEditar(categoria.id)" class="btn-editar">Editar</button>
+            <button @click="confirmarEliminar(categoria)" class="btn-eliminar">Eliminar</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
 
     <p v-if="!loading && !productos.length">No hay productos cargados.</p>
   </section>

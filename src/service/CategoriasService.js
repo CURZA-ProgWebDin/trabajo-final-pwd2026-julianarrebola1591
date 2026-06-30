@@ -15,7 +15,7 @@ class CategoriasService {
     return response.data
   }
 
-  async destroy(id) {
+  async delete(id) {
     return await axios.delete(`/categorias/${id}`)
   }
 }
