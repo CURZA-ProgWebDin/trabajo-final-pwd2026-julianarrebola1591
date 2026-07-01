@@ -30,6 +30,12 @@ const routes = [
     meta: { requiresAuth: true },
   },
   {
+    path: '/productos/editar/:id',
+    name: 'ProductosEditar',
+    component: () => import('../views/ProductosEditar.vue'),
+    meta: { requiresAuth: true },
+  },
+  {
     path: '/categorias',
     name: 'Categorias',
     component: () => import('../views/CategoriasView.vue'),

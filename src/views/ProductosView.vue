@@ -1,9 +1,12 @@
 <script setup>
-import { onMounted } from 'vue'
+import { onMounted, ref } from 'vue'
 import { useProductosStore } from '@/stores/productos'
 import { storeToRefs } from 'pinia'
+import { useRouter } from 'vue-router'
 
 const productosStore = useProductosStore()
+const router = useRouter()
+const productoAEliminar = ref(null)
 
 const { productos, loading, error } = storeToRefs(productosStore)
 const { fetchProductos } = productosStore
@@ -11,6 +14,23 @@ const { fetchProductos } = productosStore
 onMounted(() => {
   fetchProductos()
 })
+
+function irAEditar(id) {
+  router.push(`/productos/editar/${id}`)
+}
+
+function confirmarEliminar(categoria) {
+  categoriaAEliminar.value = categoria
+}
+
+function cancelar() {
+  categoriaAEliminar.value = null
+}
+
+async function eliminar() {
+  await store.eliminarCategoria(categoriaAEliminar.value.id)
+  categoriaAEliminar.value = null
+}
 </script>
 
 <template>
@@ -45,13 +65,26 @@ onMounted(() => {
           <td>{{ producto.proveedor_id.nombre }}</td>
           <td>{{ producto.stock_actual }}</td>
           <td class="acciones">
-            <button @click="irAEditar(categoria.id)" class="btn-editar">Editar</button>
-            <button @click="confirmarEliminar(categoria)" class="btn-eliminar">Eliminar</button>
+            <button @click="irAEditar(producto.id)" class="btn-editar">Editar</button>
+            <button @click="confirmarEliminar(producto)" class="btn-eliminar">Eliminar</button>
           </td>
         </tr>
       </tbody>
     </table>
 
     <p v-if="!loading && !productos.length">No hay productos cargados.</p>
+
+    <div v-if="productoAEliminar" class="overlay">
+      <div class="dialogo">
+        <p>
+          ¿Seguro que querés eliminar <strong>{{ productoAEliminar.nombre }}</strong
+          >?
+        </p>
+        <div class="dialogo-acciones">
+          <button @click="eliminar" class="btn-eliminar">Sí, eliminar</button>
+          <button @click="cancelar" class="btn-cancelar">Cancelar</button>
+        </div>
+      </div>
+    </div>
   </section>
 </template>
